@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Container, Typography, Button, CssBaseline, Paper, ClickAwayListener } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import image from './pll.png'; // Import the image
+import image from './img/pll.png'; // Import the image
 import data from './final.json';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -27,298 +27,298 @@ let key = ""
 const category = {
   "WAT": {
       text: "Waterdogs",
-      image: require('./waterdogs.png'),
+      image: require('./img/waterdogs.png'),
       description: "Waterdogs LC (2020-2023), Philadelphia Waterdogs (2024-Present)"
 
   },
   "ATL": {
     text: "Atlas",
-    image: require('./atlas.png'),
+    image: require('./img/atlas.png'),
     description: "Atlas LC (2019-2023), New York Atlas (2024-Present)"
 
   },
   "ARC": {
     text: "Archers",
-    image: require('./archers.png'),
+    image: require('./img/archers.png'),
     description: "Archers LC (2019-2023), Utah Archers (2024-Present)"
 
   },
   "Cannons": {
     text: "Cannons",
-    image: require('./cannons.png'),
+    image: require('./img/cannons.png'),
     description: "Boston Cannons (MLL) (2001-2020), Cannons LC (2021-2023), Boston Cannons (2024-Present)"
 
   },
   "CHA": {
     text: "Chaos",
-    image: require('./chaos.png'),
+    image: require('./img/chaos.png'),
     description: "Chaos LC (2019-2023), Carolina Chaos (2024-Present)"
 
   },
   "OUT": {
     text: "Outlaws",
-    image: require('./outlaws.png'),
+    image: require('./img/outlaws.png'),
     description: "Denver Outlaws (MLL) (2006-2020), Denver Outlaws (2024-Present)"
 
   },
   "RED": {
     text: "Redwoods",
-    image: require('./redwoods.png'),
+    image: require('./img/redwoods.png'),
     description: "Redwoods LC (2019-2023), California Redwoods (2024-Present)"
 
   },
   "WHP": {
     text: "Whipsnakes",
-    image: require('./whipsnakes.png'),
+    image: require('./img/whipsnakes.png'),
     description: "Whipsnakes LC (2019-2023), Maryland Whipsnakes (2024-Present)"
 
   },
   "BAY": {
     text: "Bayhawks",
-    image: require('./Bayhawks.png'),
+    image: require('./img/Bayhawks.png'),
     description: "Baltimore Bayhawks (MLL) (2001-2006), Washington Bayhawks (MLL) (2007-2009), Chesapeake Bayhawks (MLL) (2010-2010)"
 
   },
   "DRG": {
     text: "Dragons",
-    image: require('./Dragons.png'),
+    image: require('./img/Dragons.png'),
     description: "San Francisco Dragons (MLL) (2006-2008)"
 
   },
   "RIP": {
     text: "Riptide",
-    image: require('./Riptide.png'),
+    image: require('./img/Riptide.png'),
     description: "Los Angeles Riptide (MLL) (2006-2008)"
 
   },
   "NYL": {
     text: "Lizards",
-    image: require('./Lizards.png'),
+    image: require('./img/Lizards.png'),
     description: "Long Island Lizards (MLL) (2001-2012), New York Lizards (MLL) (2013-2020)"
 
   },
   "HND": {
     text: "Hounds",
-    image: require('./Hounds.png'),
+    image: require('./img/Hounds.png'),
     description: "Charlotte Hounds (MLL) (2012-2018)"
 
   },
   "NJP": {
     text: "Pride",
-    image: require('./Pride.png'),
+    image: require('./img/Pride.png'),
     description: "New Jersey Pride (MLL) (2001-2008)"
 
   },
   "RAT": {
     text: "Rattlers",
-    image: require('./Rattlers.png'),
+    image: require('./img/Rattlers.png'),
     description: "Rochester Rattlers (MLL) (2001-2008, 2011-2017), Dallas Rattlers (MLL) (2018-2019)"
 
   },
   "LAU": {
     text: "Launch",
-    image: require('./Launch.png'),
+    image: require('./img/Launch.png'),
     description: "Florida Launch (MLL) (2014-2018)"
 
   },
   "BLZ": {
     text: "Blaze",
-    image: require('./Blaze.png'),
+    image: require('./img/Blaze.png'),
     description: "Atlanta Blaze (MLL) (2016-2019)"
 
   },
   "MAC": {
     text: "Machine",
-    image: require('./Machine.png'),
+    image: require('./img/Machine.png'),
     description: "Chicago Machine (MLL) (2006-2010), Ohio Machine (MLL) (2012-2018)"
 
   },
   "NAT": {
     text: "Nationals",
-    image: require('./Nationals.png'),
+    image: require('./img/Nationals.png'),
     description: "Toronto Nationals (MLL) (2009-2010), Hamilton Nationals (MLL) (2011-2013)"
 
   },
   "HAM": {
     text: "Hammerheads",
-    image: require('./Hammerheads.png'),
+    image: require('./img/Hammerheads.png'),
     description: "Connecticut Hammerheads (MLL) (2020)"
 
   },
   "CHR": {
     text: "Chrome",
-    image: require('./Chrome.png'),
+    image: require('./img/Chrome.png'),
     description: "Chrome LC (2019-2023)"
 
   },
   "BAR": {
     text: "Barrage",
-    image: require('./Barrage.png'),
+    image: require('./img/Barrage.png'),
     description: "Bridgeport Barrage (MLL) (2001-2003), Philadelphia Barrage (MLL) (2004-2008, 2020)"
 
   },
   "USA": {
     text: "United States",
-    image: require('./USA.png'),
+    image: require('./img/USA.png'),
     description: "Player can represent the United States National Team"
 
   },
   "CAN": {
     text: "Canada",
-    image: require('./CAN.png'),
+    image: require('./img/CAN.png'),
     description: "Player can represent the Canada National Team"
 
   },
   "IRQ": {
     text: "Haudenosaunee",
-    image: require('./IRQ.png'),
+    image: require('./img/IRQ.png'),
     description: "Player can represent the Haudenosaunee National Team"
 
   },
   "Virginia": {
     text: "Virginia",
-    image: require('./Virginia.png'),
+    image: require('./img/Virginia.png'),
     description: "Player played at the University of Virginia"
 
   },
   "Notre Dame": {
     text: "Notre Dame",
-    image: require('./NotreDame.png'),
+    image: require('./img/NotreDame.png'),
     description: "Player played at the University of Notre Dame"
 
   },
   "Maryland": {
     text: "Maryland",
-    image: require('./Maryland.png'),
+    image: require('./img/Maryland.png'),
     description: "Player played at the University of Maryland"
 
   },
   "Johns Hopkins": {
     text: "Johns Hopkins",
-    image: require('./JohnsHopkins.png'),
+    image: require('./img/JohnsHopkins.png'),
     description: "Player played at Johns Hopkins University"
 
   },
   "Duke": {
     text: "Duke",
-    image: require('./Duke.png'),
+    image: require('./img/Duke.png'),
     description: "Player played at Duke University"
 
   },
   "Denver": {
     text: "Denver",
-    image: require('./Denver.png'),
+    image: require('./img/Denver.png'),
     description: "Player played at the University of Denver"
 
   },
   "Syracuse": {
     text: "Syracuse",
-    image: require('./Syracuse.png'),
+    image: require('./img/Syracuse.png'),
     description: "Player played at Syracuse University"
   },
   "North Carolina": {
     text: "North Carolina",
-    image: require('./NorthCarolina.png'),
+    image: require('./img/NorthCarolina.png'),
     description: "Player played at the University of North Carolina"
   },
   "Ohio State": {
     text: "Ohio State",
-    image: require('./OhioState.png'),
+    image: require('./img/OhioState.png'),
     description: "Player played at Ohio State University"
   },
   "Penn State": {
     text: "Penn State",
-    image: require('./PennState.png'),
+    image: require('./img/PennState.png'),
     description: "Player played at Penn State University"
   },
   "Michigan": {
     text: "Michigan",
-    image: require('./Michigan.png'),
+    image: require('./img/Michigan.png'),
     description: "Player played at the University of Michigan"
   },
   "Rutgers": {
     text: "Rutgers",
-    image: require('./Rutgers.png'),
+    image: require('./img/Rutgers.png'),
     description: "Player played at Rutgers University"
   },
   "Yale": {
     text: "Yale",
-    image: require('./Yale.png'),
+    image: require('./img/Yale.png'),
     description: "Player played at Yale University"
   },
   "Princeton": {
     text: "Princeton",
-    image: require('./Princeton.png'),
+    image: require('./img/Princeton.png'),
     description: "Player played at Princeton University"
   },
   "Penn": {
     text: "Penn",
-    image: require('./Penn.png'),
+    image: require('./img/Penn.png'),
     description: "Player played at the University of Pennsylvania"
   },
   "Cornell": {
     text: "Cornell",
-    image: require('./Cornell.png'),
+    image: require('./img/Cornell.png'),
     description: "Player played at Cornell University"
   },
   "Brown": {
     text: "Brown",
-    image: require('./Brown.png'),
+    image: require('./img/Brown.png'),
     description: "Player played at Brown University"
   },
   "Albany": {
     text: "Albany",
-    image: require('./Albany.png'),
+    image: require('./img/Albany.png'),
     description: "Player played at the University of Albany"
   },
   "Villanova": {
     text: "Villanova",
-    image: require('./Villanova.png'),
+    image: require('./img/Villanova.png'),
     description: "Player played at Villanova University"
   },
   "Georgetown": {
     text: "Georgetown",
-    image: require('./Georgetown.png'),
+    image: require('./img/Georgetown.png'),
     description: "Player played at Georgetown University"
   },
   "Marquette": {
     text: "Marquette",
-    image: require('./Marquette.png'),
+    image: require('./img/Marquette.png'),
     description: "Player played at Marquette University"
   },
   "High Point": {
     text: "High Point",
-    image: require('./HighPoint.png'),
+    image: require('./img/HighPoint.png'),
     description: "Player played at High Point University"
   },
   "UMass": {
     text: "UMass",
-    image: require('./UMass.png'),
+    image: require('./img/UMass.png'),
     description: "Player played at the University of Massachusetts"
   },
   "Towson": {
     text: "Towson",
-    image: require('./Towson.png'),
+    image: require('./img/Towson.png'),
     description: "Player played at Towson University"
   },
   "Delaware": {
     text: "Delaware",
-    image: require('./Delaware.png'),
+    image: require('./img/Delaware.png'),
     description: "Player played at the University of Delaware"
   },
   "Hofstra": {
     text: "Hofstra",
-    image: require('./Hofstra.png'),
+    image: require('./img/Hofstra.png'),
     description: "Player played at Hofstra University"
   },
   "Lehigh": {
     text: "Lehigh",
-    image: require('./Lehigh.png'),
+    image: require('./img/Lehigh.png'),
     description: "Player played at Lehigh University"
   },
   "Loyola": {
     text: "Loyola",
-    image: require('./Loyola.png'),
+    image: require('./img/Loyola.png'),
     description: "Player played at Loyola University"
   },
   "undrafted": {
@@ -975,10 +975,10 @@ function Unlimited() {
       if(left[Math.floor(selectedBox/4)-1].localeCompare(top[(selectedBox%4)-1]) < 0) key = left[Math.floor(selectedBox/4)-1] + top[(selectedBox%4)-1]
       else key = top[(selectedBox%4)-1] + left[Math.floor(selectedBox/4)-1]
       
-      if(CategoryData[key] == undefined) CategoryData[key] = {"total": 1}
+      if(CategoryData[key] === undefined) CategoryData[key] = {"total": 1}
       else CategoryData[key]["total"] += 1
 
-      if(PlayerData[playerName[selectedBox]].count[key] == undefined) PlayerData[playerName[selectedBox]].count[key] = 1
+      if(PlayerData[playerName[selectedBox]].count[key] === undefined) PlayerData[playerName[selectedBox]].count[key] = 1
       else PlayerData[playerName[selectedBox]].count[key]++
 
       updateData(playerName[selectedBox],{ count: PlayerData[playerName[selectedBox]].count })
@@ -1067,7 +1067,7 @@ function Unlimited() {
                       boxSizing: 'border-box',
                       cursor: 'pointer',
                     }}
-                    onClick={() => index == 0 ? nothing : isImageCell ? handleImageClick(index) : handleBoxClick(index)}
+                    onClick={() => index === 0 ? nothing : isImageCell ? handleImageClick(index) : handleBoxClick(index)}
                   >
                     
                     {isImageCell ? (
@@ -1364,7 +1364,7 @@ function Unlimited() {
                         <a  href={players[text][17]} target="_blank" rel="noreferrer" style={{ color: '#90caf9',textAlign: 'left',fontSize:"12px" }}>{text} </a>
                         <p  style={{textAlign: 'bottom', marginLeft: '10px',fontSize:"8px",color:'lightgray' }}>{"("}{players[text][1]}{")"}</p>
                         <p style={{ textAlign: 'bottom', marginLeft: '10px', fontSize: "12px", color: 'lightgray' }}>
-                        { ((PlayerData[text] != undefined) && (PlayerData[text].count != undefined) && (PlayerData[text].count[top[(selectedBox%4)-1] + left[Math.floor(selectedBox/4)-1]] != undefined) && (left[Math.floor(selectedBox/4)-1].localeCompare(top[(selectedBox%4)-1]) >= 0)) ? (Math.round((PlayerData[text].count[top[(selectedBox%4)-1] + left[Math.floor(selectedBox/4)-1]] / CategoryData[top[(selectedBox%4)-1] + left[Math.floor(selectedBox/4)-1]]['total']) * 10000)/100) + "%" : ((PlayerData[text] != undefined) && (PlayerData[text].count != undefined) && (PlayerData[text].count[left[Math.floor(selectedBox/4)-1] + top[(selectedBox%4)-1]] != undefined) && (left[Math.floor(selectedBox/4)-1].localeCompare(top[(selectedBox%4)-1]) < 0)) ? (Math.round((PlayerData[text].count[left[Math.floor(selectedBox/4)-1] + top[(selectedBox%4)-1]] / CategoryData[left[Math.floor(selectedBox/4)-1] + top[(selectedBox%4)-1]]['total']) * 10000)/100) + "%" : "0%" }
+                        { ((PlayerData[text] !== undefined) && (PlayerData[text].count !== undefined) && (PlayerData[text].count[top[(selectedBox%4)-1] + left[Math.floor(selectedBox/4)-1]] !== undefined) && (left[Math.floor(selectedBox/4)-1].localeCompare(top[(selectedBox%4)-1]) >= 0)) ? (Math.round((PlayerData[text].count[top[(selectedBox%4)-1] + left[Math.floor(selectedBox/4)-1]] / CategoryData[top[(selectedBox%4)-1] + left[Math.floor(selectedBox/4)-1]]['total']) * 10000)/100) + "%" : ((PlayerData[text] !== undefined) && (PlayerData[text].count !== undefined) && (PlayerData[text].count[left[Math.floor(selectedBox/4)-1] + top[(selectedBox%4)-1]] !== undefined) && (left[Math.floor(selectedBox/4)-1].localeCompare(top[(selectedBox%4)-1]) < 0)) ? (Math.round((PlayerData[text].count[left[Math.floor(selectedBox/4)-1] + top[(selectedBox%4)-1]] / CategoryData[left[Math.floor(selectedBox/4)-1] + top[(selectedBox%4)-1]]['total']) * 10000)/100) + "%" : "0%" }
                         </p>
                       </span>
                     ))}
